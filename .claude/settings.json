@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n \"awaiting_cliente_bairro\\\\|awaiting_deposito_bairro\" c:/Users/Home/Documents/App/Dev/chamaDudu_proj/functions/tests/*.ts)",
+      "Bash(grep -n \"expect.*awaiting_cliente_bairro\\\\|expect.*awaiting_deposito_bairro\" c:/Users/Home/Documents/App/Dev/chamaDudu_proj/functions/tests/*.ts)",
+      "Bash(grep -n \"hasActiveFlow\\\\|botState.*!=.*idle\" c:/Users/Home/Documents/App/Dev/chamaDudu_proj/functions/src/domain/whatsapp/*.ts)",
+      "Read(//c/Users/Home/.claude/projects/c--Users-Home-Documents-App-Dev-chamaDudu-proj/**)",
+      "Bash(grep -v \"//\\\\|^\\\\s*//\")",
+      "Read(//c/Users/Home/Documents/App/Dev/gpcerto-site/Finmly/functions/src/**)",
+      "Read(//c/Users/Home/Documents/App/Dev/gpcerto-site/functions/src/**)",
+      "Read(//c/Users/Home/Documents/App/Dev/gpcerto-site/Finmly/src/**)",
+      "Bash(done)",
+      "Bash(xargs grep:*)",
+      "Read(//d c:/Users/Home/Documents/App/Dev/**)",
+      "Bash(grep -r DUDU_DEBUG functions/src --include=*.ts)",
+      "Bash(grep -r DUDU_DEBUG src --include=*.ts)",
+      "Bash(grep -rn STICKERSs*= src/infra/config/stickers.ts)",
+      "Read(//c/Users/Home/Documents/App/Dev/**)",
+      "Bash(grep -n \"saveIndicacao\\\\|saveOutbound\\\\|}\\\\s*$\")",
+      "Bash(python3:*)",
+      "Read(//c/Users/Home/.claude/projects/**)",
+      "Bash(/tmp/extract_feature3.py:*)",
+      "Bash(__NEW_LINE_fccb66bb13151ef2__ python3:*)",
+      "Bash(grep -n 'metaIntent.action === \"\"cancel\"\"' src/domain/whatsapp/stateMachine.ts)",
+      "Read(//c/Users/Home/Documents/App/DevchamaDudu_proj/**)",
+      "Bash(jq -r \".message.content[]? | select\\(type == \"\"text\"\"\\) | select\\(contains\\(\"\"FEATURE 4\"\"\\)\\)\" C:UsersHome.claudeprojectsc--Users-Home-Documents-App-Dev-chamaDudu-proj78346ae4-c485-40f7-9236-dfd6d9c91225.jsonl)",
+      "Bash(ls -la modules/*/)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Home\\.claude\\projects\\c--Users-Home-Documents-App-Dev-chamaDudu-proj",
+      "\\tmp"
+    ]
+  }
+}

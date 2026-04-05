@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /_ops/
+Disallow: /admin/
+Disallow: /imprimir/
+Disallow: /impressao/
+
+Sitemap: https://chamadudu.web.app/sitemap.xml

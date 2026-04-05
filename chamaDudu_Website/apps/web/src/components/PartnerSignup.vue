@@ -1,0 +1,3 @@
+<template>
+  <PreCadastroForm />
+</template>

@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "kosh-tecnologia"
+  },
+  "targets": {
+    "kosh-tecnologia": {
+      "hosting": {
+        "web": [
+          "chamadudu"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

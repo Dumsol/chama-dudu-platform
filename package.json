@@ -1,0 +1,20 @@
+{
+  "name": "chamadudu_proj",
+  "version": "1.0.0",
+  "description": "Este repo contem: - backend (Firebase Functions v2 + Firestore) em `functions/` - frontend Nuxt em `chamaDudu_Website/apps/web`",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}

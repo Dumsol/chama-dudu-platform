@@ -1,0 +1,86 @@
+[
+  {
+    "id": "paulista-centro",
+    "name": "Paulista Centro",
+    "lat": -7.940344,
+    "lng": -34.8814314
+  },
+  {
+    "id": "janga",
+    "name": "Janga",
+    "lat": -7.929636599999999,
+    "lng": -34.822953
+  },
+  {
+    "id": "pau-amarelo",
+    "name": "Pau Amarelo",
+    "lat": -7.9104905,
+    "lng": -34.831013
+  },
+  {
+    "id": "maria-farinha",
+    "name": "Maria Farinha",
+    "lat": -7.855220099999999,
+    "lng": -34.8355412
+  },
+  {
+    "id": "jardim-paulista",
+    "name": "Jardim Paulista (I e II)",
+    "lat": -7.950702499999999,
+    "lng": -34.8965242
+  },
+  {
+    "id": "maranguape",
+    "name": "Maranguape (I e II)",
+    "lat": -7.9317,
+    "lng": -34.8617
+  },
+  {
+    "id": "arthur-lundgren",
+    "name": "Arthur Lundgren (I e II)",
+    "lat": -7.9279978,
+    "lng": -34.8940648
+  },
+  {
+    "id": "paratibe",
+    "name": "Paratibe",
+    "lat": -7.9368362,
+    "lng": -34.8998878
+  },
+  {
+    "id": "nobre",
+    "name": "Nobre",
+    "lat": -7.939689199999999,
+    "lng": -34.8729592
+  },
+  {
+    "id": "vila-torres-galvao",
+    "name": "Vila Torres Galvão",
+    "lat": -7.9557997,
+    "lng": -34.8754852
+  },
+  {
+    "id": "mirueira",
+    "name": "Mirueira",
+    "lat": -7.9667974,
+    "lng": -34.89083220000001
+  },
+  {
+    "id": "fragoso",
+    "name": "Fragoso",
+    "lat": -7.969208699999999,
+    "lng": -34.8627589
+  },
+  {
+    "id": "jaguarana",
+    "name": "Jaguarana",
+    "lat": -7.925440200000001,
+    "lng": -34.8639239
+  },
+  {
+    "id": "conceicao",
+    "name": "Nossa Senhora da Conceição",
+    "lat": -7.9024469,
+    "lng": -34.8432447
+  }
+]

@@ -1,0 +1,20 @@
+# Compiled JavaScript files
+lib/
+*.js
+*.js.map
+
+# Node dependencies
+node_modules/
+
+# Environment and Secrets
+.env
+.env.*
+!.env.example
+.secret.local
+local.env
+*.json
+
+# Logs
+*.log
+out.txt
+PAINEL_CONFIG.schema.json

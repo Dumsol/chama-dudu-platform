@@ -1,0 +1,115 @@
+name: Deploy Functions Prod
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_id:
+        description: "Firebase/GCP project id"
+        required: true
+        default: "your-project-id"
+      run_scheduler_smoke:
+        description: "Run scheduler jobs smoke after deploy"
+        required: true
+        default: "true"
+        type: choice
+        options: ["true", "false"]
+
+env:
+  FUNCTIONS_FILTER: "functions:dudu_whatsappWebhookV1,functions:dudu_diagHttpV1,functions:dudu_interWebhookV1,functions:dudu_renderReceiptHtmlV1,functions:dudu_depositoRegisterV1,functions:dudu_slaChecker3MinHttpV1,functions:dudu_promoAdminToggleV1,functions:dudu_opsAppV1,functions:dudu_billingGenerateWeeklyV1,functions:dudu_billingPublicCycleV1,functions:dudu_cronRunnerV1,functions:dudu_seedTestDepositoV1,functions:dudu_legacyRootAuditMonitorDailyV1"
+
+jobs:
+  gate-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: functions
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      PROJECT_ID: ${{ inputs.project_id }}
+      AUTH_MODE: gcloud
+      ROLLOUT_REQUIRED_TENANTS: ${{ secrets.ROLLOUT_REQUIRED_TENANTS }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ inputs.project_id }}
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: functions/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run gate:deploy (blocks release on failure)
+        run: npm run gate:deploy
+
+  deploy:
+    needs: gate-deploy
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: functions
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      PROJECT_ID: ${{ inputs.project_id }}
+      AUTH_MODE: gcloud
+      FUNCTIONS_DISCOVERY_TIMEOUT: "120"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ inputs.project_id }}
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: functions/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Deploy Dudu functions only
+        run: npx firebase-tools deploy --project "$PROJECT_ID" --only "$FUNCTIONS_FILTER"
+
+      - name: Verify all dudu functions are nodejs22
+        run: |
+          gcloud functions list --v2 --project "$PROJECT_ID" --format="value(name,buildConfig.runtime)" \
+            | grep dudu_ \
+            | awk '$2 != "nodejs22" { print "runtime_mismatch: " $0; bad=1 } END { exit bad }'
+
+      - name: Post-deploy strict audit
+        run: npm run audit:legacy-root:strict
+
+      - name: Scheduler smoke (monitor + seed)
+        if: ${{ inputs.run_scheduler_smoke == 'true' }}
+        run: |
+          gcloud scheduler jobs run firebase-schedule-dudu_legacyRootAuditMonitorDailyV1-southamerica-east1 --location southamerica-east1 --project "$PROJECT_ID"
+          gcloud scheduler jobs run firebase-schedule-dudu_seedTestDepositoV1-southamerica-east1 --location southamerica-east1 --project "$PROJECT_ID"
