@@ -23,7 +23,7 @@ This platform doesn't just "chat"—it thinks. By integrating **Google Vertex AI
 - **Fail-Closed Intent Recognition**: Complex or ambiguous orders are resolved via vector-search-driven "hints," ensuring the system never misinterprets a critical field like delivery address or volume.
 
 ### 🛠 Technical Architecture
-<img src="https://img.shields.io/badge/Frontend-Nuxt_3-00DC82?style=for-the-badge&logo=nuxtdotjs&logoColor=white" /> <img src="https://img.shields.io/badge/Backend-Firebase_Functions_v2-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" /> <img src="https://img.shields.io/badge/AI_Engine-Google_Vertex_AI-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" /> <img src="https://img.shields.io/badge/Database-Firestore_NoSQL-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" /> <img src="https://img.shields.io/badge/Messaging-WhatsApp_Business_API-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+<img src="https://img.shields.io/badge/Frontend-Nuxt_3-00DC82?style=for-the-badge&logo=nuxtdotjs&logoColor=white" /> <img src="https://img.shields.io/badge/Backend-Firebase_Functions_v2-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" /> <img src="https://img.shields.io/badge/AI_Engine-Google_Vertex_AI-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" /> <img src="https://img.shields.io/badge/Database-Firestore_NoSQL-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" /> <img src="https://img.shields.io/badge/Messaging-WhatsApp_Business_API-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" /> <img ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)/>
 
 ---
 
